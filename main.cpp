@@ -1,41 +1,44 @@
+#include <iostream>
 
-struct Resolution{
-        int x;
-        int y;
-    };
-enum Type{
-        Png,                                           
-        Jpeg,
-    };
-class Image{
-    public:
-    string path;
-    void get_resolution();
-    void get_type();
-    void validate_path();  
+struct Resolution {
+  unsigned int rows;
+  unsigned int columns;
 };
-enum Filter{
-        black,
-        white,
-        magenta,
-    };
-    enum Rotation{
-        right,
-        left,
-        flip,
-    };
-    enum Crop{
-        four_by_three,
-        one_to_one,
-    };
 
-class Editor : public Image{
+enum Type {
+  PNG,
+  JPEG,
+};
+
+class Image {
 public:
-void filter(Filter f);
-void Rotation(Direction d);
-void Crop(Ratio r);
+  std::string path;
+  void get_resolution();
+  void get_type();
+  void validate_path();
 };
-int main(){
-        
-}
-        
+
+enum Filter {
+  BlackandWhite,
+  Magenta,
+};
+
+enum Direction {
+  Right90,
+  Left90,
+  Flip180,
+};
+
+enum Ratio {
+  FourByThree,
+  OneToOne,
+};
+
+class Editor : public Image {
+public:
+  void filter(Filter filter);
+  void rotation(Direction direction);
+  void crop(Ratio ratio);
+};
+
+int main() { return 0; }
