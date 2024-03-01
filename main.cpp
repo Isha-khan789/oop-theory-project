@@ -30,6 +30,7 @@ enum Filter{
     };
 
 class Editor : public Image{
+public:
 void filter(Filter f);
 void Rotation(Direction d);
 void Crop(Ratio r);
