@@ -29,8 +29,10 @@ enum Filter{
         one_to_one,
     };
 
-class Editor:Image{
-
+class Editor : public Image{
+void filter(Filter f);
+void Rotation(Direction d);
+void Crop(Ratio r);
 };
 int main(){
         
