@@ -1,3 +1,5 @@
+#include <iostream>
+
 struct Resolution {
   int x;
   int y;
@@ -10,7 +12,7 @@ enum Type {
 
 class Image {
 public:
-  string path;
+  std::string path;
   void get_resolution();
   void get_type();
   void validate_path();
