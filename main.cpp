@@ -15,3 +15,21 @@ class Image{
     void get_type();
     void validate_path();  
 };
+class Editor:Image{
+    public:
+    enum Filter{
+        black,
+        white,
+        magenta,
+    };
+    enum Rotation{
+        right,
+        left,
+        flip,
+    };
+    enum Crop{
+        four_by_three,
+        one_to_one,
+    };
+
+};
