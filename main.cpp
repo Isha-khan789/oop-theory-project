@@ -1,23 +1,21 @@
 #include<iostream>
 using namespace std;
-class Image{
-    public:
-    string path;
-    struct Resolution{
+struct Resolution{
         int x;
         int y;
     };
-    enum Type{
-        Png,
+enum Type{
+        Png,                                           
         Jpeg,
     };
+class Image{
+    public:
+    string path;
     void get_resolution();
     void get_type();
     void validate_path();  
 };
-class Editor:Image{
-    public:
-    enum Filter{
+enum Filter{
         black,
         white,
         magenta,
@@ -31,5 +29,7 @@ class Editor:Image{
         four_by_three,
         one_to_one,
     };
+
+class Editor:Image{
 
 };
