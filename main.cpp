@@ -1,13 +1,13 @@
 #include <iostream>
 
 struct Resolution {
-  int x;
-  int y;
+  unsigned int rows;
+  unsigned int columns;
 };
 
 enum Type {
-  Png,
-  Jpeg,
+  PNG,
+  JPEG,
 };
 
 class Image {
@@ -19,29 +19,26 @@ public:
 };
 
 enum Filter {
-  black,
-  white,
-  magenta,
+  BlackandWhite,
+  Magenta,
 };
 
-enum Rotation {
-  right,
-  left,
-  flip,
+enum Direction {
+  Right90,
+  Left90,
+  Flip180,
 };
 
-enum Crop {
-  four_by_three,
-  one_to_one,
+enum Ratio {
+  FourByThree,
+  OneToOne,
 };
 
 class Editor : public Image {
 public:
-  void filter(Filter f);
-  void Rotation(Direction d);
-  void Crop(Ratio r);
+  void filter(Filter filter);
+  void rotation(Direction direction);
+  void crop(Ratio ratio);
 };
 
-int main() {
-  return 0;
-}
+int main() { return 0; }
