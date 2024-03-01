@@ -32,3 +32,7 @@ enum Filter{
 class Editor:Image{
 
 };
+int main(){
+        
+}
+        
