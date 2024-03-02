@@ -1,26 +1,35 @@
 #include <iostream>
 
 struct Resolution {
-  unsigned int rows;
-  unsigned int columns;
+  unsigned int x;
+  unsigned int y;
 };
 
 enum Type {
-  PNG,
-  JPEG,
+  Png,
+  Jpeg,
 };
 
 class Image {
-public:
   std::string path;
+
   void get_resolution();
   void get_type();
-  void validate_path();
+
+public:
+  Resolution resolution;
+  Type type;
+
+  Image(std::string path);
+
+  bool exists();
+  bool save();
 };
 
 enum Filter {
-  BlackandWhite,
-  Magenta,
+  Greyscale,
+  Pastel,
+  Vintage,
 };
 
 enum Direction {
@@ -30,8 +39,9 @@ enum Direction {
 };
 
 enum Ratio {
-  FourByThree,
-  OneToOne,
+  Facebook,
+  Instagram,
+  X,
 };
 
 class Editor : public Image {
