@@ -10,45 +10,64 @@ enum Type {
   Jpeg,
 };
 
-class Image {
-  std::string path;
-
-  void get_resolution();
-  void get_type();
-
+// Represents a genric file of any type
+class File {
 public:
-  Resolution resolution;
-  Type type;
+  std::string path; // The path to file
 
-  Image(std::string path);
-
-  bool exists();
-  bool save();
+  bool exists(); // Return true if file exits else false
+  void open(); // Opens the file. Crashes if fails
+  void save(); // Saves the file. Crashes if fails
 };
 
+// Represensts a image file
+class Image : public File {
+public:
+  Resolution resolution; // The resolution of the image in pixel density
+  Type type; // The type of the image
+
+  Image(std::string path); // Initialize the image object
+
+private:
+  void get_resolution(); // Gets the resolution of the image
+  void get_type(); // Gets the type of the image
+};
+
+// Variant to represent different types of filter
 enum Filter {
   Greyscale,
   Pastel,
   Vintage,
 };
 
+// Variant to represent the three direction of rotation
 enum Direction {
   Right90,
   Left90,
   Flip180,
 };
 
+// Variant to represent the common aspect ratio for cropping
 enum Ratio {
   Facebook,
   Instagram,
-  X,
+  X, };
+
+// The editor that modifies the image as needed
+class Editor {
+public:
+  Image image; // The image to be modified
+
+  void filter(Filter f); // Applies the given filter to image
+  void rotate(Direction d); // Applies the given rotation direction to image
+  void crop(Ratio ratio); // Applies the given aspect ratio to the image
 };
 
-class Editor : public Image {
+// The interface that interacts with the user for input/output operations
+class User {
 public:
-  void filter(Filter filter);
-  void rotation(Direction direction);
-  void crop(Ratio ratio);
+  std::string prompt(std::string msg); // Prompts the user with given msg. Returns the response as string
+  void print(std::string msg); // Prints the given msg to stdout
 };
 
 int main() { return 0; }
